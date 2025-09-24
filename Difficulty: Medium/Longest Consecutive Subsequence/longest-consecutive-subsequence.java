@@ -3,19 +3,25 @@ class Solution {
     // Function to return length of longest subsequence of consecutive integers.
     public int longestConsecutive(int[] arr) {
         // code here
-         Arrays.sort(arr);
-        int count = 1;
-        int max = 1; // start from 1 because even one number is a subsequence
-
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] + 1 == arr[i + 1]) {
-                count++;
-                max = Math.max(max, count);
-            } 
-            else if (arr[i] != arr[i + 1]) { // ignore duplicates
-                count = 1;
-            }
-        }
-        return max;
+       int n=arr.length;
+       if(n==0) return 0;
+       
+       HashSet<Integer>brs=new HashSet<>();
+       for(int i=0;i<arr.length;i++){
+           brs.add(arr[i]);
+       }
+       int longest=1;
+       for(int a : brs){
+           int count=1;
+           int num=a;
+           if(!brs.contains(a-1)){
+             while(brs.contains(num+1)){
+                 num++;
+                 count++;
+             }
+           }
+           longest=Math.max(longest,count);
+       }
+       return longest;
     }
 }
