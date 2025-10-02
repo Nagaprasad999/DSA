@@ -1,22 +1,22 @@
 class Solution {
     public void mergeArrays(int a[], int b[]) {
         // code here
-        ArrayList<Integer>ans=new ArrayList<>();
-for(int i=0;i<a.length;i++){
-    ans.add(a[i]);
-}
-for(int i=0;i<b.length;i++){
-    ans.add(b[i]);
-}
+      int n = a.length;
+        int m = b.length;
+        int end = n - 1;
+        int start = 0;
 
-Collections.sort(ans);
-int count=0;
-for(int i=0;i<a.length;i++){
-    a[i]=ans.get(count++);
-}
-for(int i=0;i<b.length;i++){
-    b[i]=ans.get(count++);
-}
+        while (end >= 0 && start < m) {
+            if (a[end] > b[start]) {
+                int temp = a[end];
+                a[end] = b[start];
+                b[start] = temp;
+            }
+            end--;
+            start++;
+        }
 
+        Arrays.sort(a);
+        Arrays.sort(b);
     }
 }
