@@ -3,7 +3,7 @@ class Solution {
         long ans = 1;
         for (int i = 1; i <= n; i++) {
             ans = ans * mid;
-            if (ans > m) return 2; // greater than m
+            if (ans > m) return 29; // greater than m
         }
         if (ans == m) return 1; // equal to m
         return 0;               // less than m
